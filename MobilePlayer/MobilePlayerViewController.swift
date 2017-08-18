@@ -9,8 +9,21 @@
 import UIKit
 import MediaPlayer
 
+
+public protocol MobilePlayerDelegate {
+    func didPressMailButton(sender: UIButton)
+    func didPressTagButton(sender: UIButton)
+
+
+}
+
 /// A view controller for playing media content.
 open class MobilePlayerViewController: MPMoviePlayerViewController {
+    
+    public var delegate: MobilePlayerDelegate?
+
+    
+    
   // MARK: Playback State
 
   /// Playback state.
@@ -190,6 +203,30 @@ open class MobilePlayerViewController: MPMoviePlayerViewController {
           slf.showContentActions(sourceView: actionButton)
         },
         forControlEvents: .touchUpInside)
+    }
+    
+    if let mail = getViewForElementWithIdentifier("mail") as? Button {
+        mail.addCallback(
+            callback: { [weak self] in
+                guard let slf = self else {
+                    return
+                }
+                slf.delegate?.didPressMailButton(sender: mail)
+              
+            },
+            forControlEvents: .touchUpInside)
+    }
+    
+    if let tag = getViewForElementWithIdentifier("tag") as? Button {
+        tag.addCallback(
+            callback: { [weak self] in
+                guard let slf = self else {
+                    return
+                }
+                slf.delegate?.didPressTagButton(sender: tag)
+                
+            },
+            forControlEvents: .touchUpInside)
     }
 
     (getViewForElementWithIdentifier("play") as? ToggleButton)?.addCallback(

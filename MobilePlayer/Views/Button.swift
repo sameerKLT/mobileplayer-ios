@@ -40,4 +40,5 @@ extension Button: Element {
   var marginLeft: CGFloat { return config.marginLeft }
   var marginRight: CGFloat { return config.marginRight }
   var view: UIView { return self }
+  var id: String? { return config.id }
 }

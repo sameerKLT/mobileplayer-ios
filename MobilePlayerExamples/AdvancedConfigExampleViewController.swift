@@ -9,7 +9,7 @@
 import UIKit
 import MobilePlayer
 
-class AdvancedConfigExampleViewController: ExampleViewController {
+class AdvancedConfigExampleViewController: ExampleViewController, MobilePlayerDelegate {
 
   override init() {
     super.init()
@@ -30,7 +30,16 @@ class AdvancedConfigExampleViewController: ExampleViewController {
       contentURL: videoURL,
       config: config)
     playerVC.title = videoTitle
+    playerVC.delegate = self
     playerVC.activityItems = [videoURL]
     presentMoviePlayerViewControllerAnimated(playerVC)
   }
+    
+    func didPressTagButton(sender: UIButton) {
+        print("tag pressed")
+    }
+    
+    func didPressMailButton(sender: UIButton) {
+        print("mail pressed")
+    }
 }

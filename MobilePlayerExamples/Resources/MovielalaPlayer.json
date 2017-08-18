@@ -45,6 +45,22 @@
         "type": "button",
         "identifier": "action"
       },
+                 {
+                 "type": "button",
+                 "identifier": "action"
+                 },
+                 {
+                 "type": "button",
+                 "identifier": "mail",
+                 "image":"smallenvelope"
+                 },
+
+                 {
+                 "type": "button",
+                 "identifier": "tag",
+                 "image":"tag"
+                 },
+
       {
         "type": "toggleButton",
         "identifier": "play"

@@ -19,6 +19,12 @@ public class ButtonConfig: ElementConfig {
 
   /// Button tint color. Default value is white.
   public let tintColor: UIColor
+    
+    //Bundle Image exists at
+//    public let bundle: Bundle
+    
+    //Bundle Image exists at
+    public let id: String?
 
   /// Initializes using default values.
   public convenience init() {
@@ -38,6 +44,15 @@ public class ButtonConfig: ElementConfig {
     let dictionary = dictionary as [String: AnyObject]
     
     height = (dictionary["height"] as? CGFloat) ?? 40
+    
+//    bundle = Bundle.init(identifier: dictionary["bundle"] as! String)!
+    
+    if let ided = dictionary["id"] as? String {
+      id = ided
+    }
+    else {
+        id = nil
+    }
 
     if let imageName = dictionary["image"] as? String {
       image = UIImage(named: imageName)
